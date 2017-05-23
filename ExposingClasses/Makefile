@@ -10,6 +10,8 @@ OBJECT	= $(OBJDIR)/$(TARGET).o
 
 RM		= rm -rf
 
+
+ifdef TARGET
 	
 all: build $(TARGET)
 
@@ -22,16 +24,29 @@ $(OBJECT): $(OBJDIR)/%.o : %.cpp
 build:
 	@mkdir -p $(OBJDIR)
 
+
+else
+
+all:
+	@echo ""
+	@echo " ### ERROR ###"
+	@echo " usage: make TARGET=ProjectYouWantToBuild"
+	@echo " example: make TARGET=ExposingClasses"
+	@echo ""
+
 .PHONY: clean cleanall
 
 clean:
 	@$(RM) $(OBJDIR) *.o *~
 
 cleanall:
-	@$(RM) $(EXEC) $(OBJDIR) *.o *~
+	@$(RM) $(OBJDIR) *.o *~ *.so
 
 help:
 	@echo ""
 	@echo " usage: make TARGET=ProjectYouWantToBuild"
 	@echo " example: make TARGET=ExposingClasses"
 	@echo ""
+
+
+endif
