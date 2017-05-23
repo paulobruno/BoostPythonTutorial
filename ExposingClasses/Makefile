@@ -5,17 +5,13 @@ SFLAGS	= -shared -Wl,-soname,$(TARGET).so
 
 OBJDIR  = .objs
 
-RM		= rm -rf
-
-#SOURCES = $(wildcard *.cpp)
-#OBJECTS = $(patsubst %.cpp, $(OBJDIR)/%.o, $(SOURCES))
 SOURCE	= $(TARGET).cpp
 OBJECT	= $(OBJDIR)/$(TARGET).o
 
+RM		= rm -rf
 
+	
 all: build $(TARGET)
-	@echo "usage: make TARGET=ProjectYouWantToBuild"
-	@echo "example: make TARGET=ExposingClasses"
 
 $(TARGET): $(OBJECT)
 	$(CC) $(SFLAGS) -o $(TARGET).so $(OBJECT) $(LFLAGS)
@@ -33,3 +29,9 @@ clean:
 
 cleanall:
 	@$(RM) $(EXEC) $(OBJDIR) *.o *~
+
+help:
+	@echo ""
+	@echo " usage: make TARGET=ProjectYouWantToBuild"
+	@echo " example: make TARGET=ExposingClasses"
+	@echo ""

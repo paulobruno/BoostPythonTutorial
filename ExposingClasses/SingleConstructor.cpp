@@ -1,3 +1,6 @@
+//http://www.boost.org/doc/libs/1_64_0/libs/python/doc/html/tutorial/tutorial/exposing.html#tutorial.exposing.constructors
+
+
 #include <Python.h>
 #include <boost/python.hpp>
 
@@ -11,7 +14,7 @@ struct World
 };
 
 
-BOOST_PYTHON_MODULE(ExposingClasses)
+BOOST_PYTHON_MODULE(SingleConstructor)
 {
     using namespace boost::python;
     
